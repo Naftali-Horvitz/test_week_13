@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: threat-api-svc
+  labels:
+    app: threat-api-svc
+    tier: database
+spec:
+  type: nodePort
+  selector:
+    app: threat-api
+  ports:
+  - port: 8000
+    targetPort: 8000
+    nodePort: 30080

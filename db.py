@@ -11,11 +11,10 @@ username = os.getenv("MONGO_USERNAME")
 password = os.getenv("MONGO_PASSWORD")
 db_name = os.getenv("MONGO_DB")
 auth_source = os.getenv("MONGO_AUTH_SOURCE")
-url = f"mongodb://{username}:{password}@{host}:{port}"
-
+url = f"mongodb://{username}:{password}@{host}:{port}/{db_name}"
+print(url)
 def get_connection():
-    client = MongoClient(url)
-    db = client[f'{db_name}']
+    db = MongoClient(url)
     return db['top_threats']
 
 def save_top_terrorist(data: pd.DataFrame):
